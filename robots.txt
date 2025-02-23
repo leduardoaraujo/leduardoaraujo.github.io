@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /skill-tree.html
+
+# Prevent access to sensitive directories
+Disallow: /js/
+Disallow: /css/
+
+# Sitemap
+Sitemap: https://leduardoaraujo.github.io/sitemap.xml

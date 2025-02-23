@@ -4,350 +4,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Portfolio profissional de Luiz Araujo - Desenvolvedor e Cientista de Dados">
+    <meta name="author" content="Luiz Araujo">
+    <meta name="referrer" content="no-referrer">
+    <!-- Previne ataques de clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- Previne MIME type sniffing -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- Habilita proteções XSS do navegador -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20ZM17 8A5 5 0 1 0 7 8A5 5 0 0 0 17 8Z' fill='%2374b9ff'/></svg>"
         type="image/svg+xml">
     <title>Portfolio | Luiz Araujo</title>
-    <style>
-        :root {
-            --primary-color: #f5f6fa;
-            --secondary-color: #74b9ff;
-            --background-color: #2d3436;
-            --text-color: #f5f6fa;
-            --card-background: #1a1e1f;
-        }
-
-        body.light-theme {
-            --primary-color: #2d3436;
-            --secondary-color: #0984e3;
-            --background-color: #f5f6fa;
-            --text-color: #2d3436;
-            --card-background: white;
-        }
-
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 3px solid var(--secondary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .location {
-            color: var(--secondary-color);
-            margin: 1rem 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            background: var(--card-background);
-            padding: 1rem;
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 50px;
-            height: 50px;
-            justify-content: center;
-        }
-
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            color: var(--secondary-color);
-        }
-
-        .section {
-            background: var(--card-background);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            animation: slideUp 1s ease-out forwards;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .skill-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 500;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--card-background);
-            border: none;
-            padding: 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            display: flex;
-            transition: transform 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-toggle svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--text-color);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .python {
-            background-color: #3776AB;
-        }
-
-        .sql {
-            background-color: #E48E00;
-        }
-
-        .data-analysis {
-            background-color: #44B78B;
-        }
-
-        .project-management {
-            background-color: #FF5A5F;
-        }
-
-        .ux-ui {
-            background-color: #FF3366;
-        }
-
-        .r-lang {
-            background-color: #276DC3;
-        }
-
-        .lua {
-            background-color: #000080;
-        }
-
-        .database {
-            background-color: #336791;
-        }
-
-        .english {
-            background-color: #4B8BBE;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .section:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <button class="theme-toggle" id="themeToggle">
-        <svg class="moon-icon" viewBox="0 0 24 24">
-            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" />
-        </svg>
-        <svg class="sun-icon hidden" viewBox="0 0 24 24">
-            <path
-                d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
-        </svg>
-    </button>
+    <div class="layout-container">
+        <aside class="sidebar">
+            <div class="profile-container">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQEzd-KJi6JmvQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721786935060?e=1746057600&v=beta&t=HDBGGLDN-ZTnSyY2azDBGY7TX8h_MXXfjePjVHj-kAg"
+                    alt="Profile Picture" class="profile-img">
+                <h1>Luiz Eduardo Araujo</h1>
+                <p class="location" data-i18n="location">📍 Goiânia, Brasil</p>
+                <p class="bio" data-i18n="bio">Solving problems with data-driven solutions.</p>
 
-    <div class="container">
-        <header class="header">
-            <img src="https://img.notionusercontent.com/s3/prod-files-secure%2Fb1258cea-c361-44c0-88bf-8b2df1289753%2F805b76f5-15d9-45cd-a3e7-fc094e13b19f%2Fimage_2.png/size/w=250?exp=1739897479&sig=ZPi9b0pbQE20fgraAv33EOuriGaSINFq62yRwvzbKw0"
-                alt="Profile Picture" class="profile-img">
-            <h1>Luiz Eduardo Araujo</h1>
-            <p class="location">📍 Goiânia, Brasil</p>
-            <p>Solving problems with data-driven solutions.</p>
-
-            <div class="social-links">
-                <a href="https://github.com/leduardoaraujo" class="social-link" title="Github" target=”_blank”>
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/luiz-edu-araujo/" class="social-link" title="LinkedIn"
-                    target=”_blank”>
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-                <a href="mailto:contato@luizaraujo.tech" class="social-link" title="Email" target=”_blank”>
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
-                    </svg>
-                </a>
-                <a href="#" class="social-link" title="Currículo" target=”_blank”>
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z" />
-                    </svg>
-                </a>
+                <div class="social-links">
+                    <a href="https://github.com/leduardoaraujo" class="social-link" data-social-id="github" title="Github" target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/luiz-edu-araujo/" class="social-link" data-social-id="linkedin" title="LinkedIn"
+                        target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:contato@luizaraujo.tech" class="social-link" data-social-id="email" title="Email" target="_blank">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" data-social-id="resume" title="Currículo" target="_blank" data-i18n-title="curriculum">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8v-2zm0-4h8v2H8v-2z" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-        </header>
+        </aside>
 
-        <section class="section">
-            <h2>Sobre mim</h2>
-            <br>
-            <p>Sou um profissional focado em transformar informações em soluções estratégicas. Com mais de dois anos de
-                experiência, desenvolvi habilidades em BI, People Analytics, Ciência de Dados, Engenharia de Dados,
-                Planejamento Comercial e Desenvolvimento de Software, sempre focado em gerar insights que otimizam
-                processos e impulsionam decisões. Minha trajetória envolve desde o monitoramento de indicadores de
-                performance até a automação de processos e desenvolvimento de dashboards interativos. Além disso, minha
-                fluência em inglês me permite atuar em ambientes internacionais e colaborar com equipes globais.
-                <br>
-                <br>
-            <h3>💻 Habilidades e Conquistas:</h3>
-            <p>✔ Business Intelligence: No setor de Controladoria, desenvolvi dashboards e relatórios para otimizar a
-            </p>
-            gestão de indicadores financeiros e operacionais.</p>
-            <p>✔ People Analytics: Estruturei relatórios e análises para monitoramento de RH, garantindo visibilidade
-                sobre desempenho e estratégias da equipe.</p>
-            <p>✔ Planejamento Comercial: Trabalhei com processamento e análise de dados do mercado imobiliário,
-                validando informações e fornecendo insights estratégicos para decisões de vendas.</p>
-            <p>✔ Automação e Processos: Experiência em SQL, Python e Power BI para estruturar e tratar grandes volumes
-                de dados com eficiência e precisão.</p>
-            </p>
-            <br>
-        </section>
+        <main class="main-content">
+            <section class="section" data-section-id="about">
+                <h2 data-i18n="about">Sobre mim</h2>
+                <p data-i18n="aboutText1">Sou um profissional focado em transformar informações em soluções estratégicas. Com mais de dois anos de
+                    experiência, desenvolvi habilidades em BI, People Analytics, Ciência de Dados, Engenharia de Dados,
+                    Planejamento Comercial e Desenvolvimento de Software, sempre focado em gerar insights que otimizam
+                    processos e impulsionam decisões.</p>
+                <p data-i18n="aboutText2">Minha trajetória envolve desde o monitoramento de indicadores de performance até a automação de processos
+                    e desenvolvimento de soluções tecnológicas, sempre buscando entregar resultados mensuráveis e
+                    impactantes.</p>
+            </section>
 
-        <section class="section">
-            <h2>Habilidades</h2>
-            <div class="skills-container">
-                <span class="skill-badge python">Python</span>
-                <span class="skill-badge sql">SQL</span>
-                <span class="skill-badge data-analysis">Análise de Dados</span>
-                <span class="skill-badge project-management">Gestão de Projetos</span>
-                <span class="skill-badge ux-ui">UX/UI</span>
-                <span class="skill-badge r-lang">R</span>
-                <span class="skill-badge lua">Lua</span>
-                <span class="skill-badge database">Gestão de Banco de Dados</span>
-                <span class="skill-badge english">Inglês Fluente</span>
-            </div>
-        </section>
+            <section class="section" data-section-id="technicalSkills">
+                <h2 data-i18n="technicalSkills">Habilidades Técnicas</h2>
+                <div class="skills-container" id="technicalSkills">
+                    <!-- Technical skills will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="section" data-section-id="softSkills">
+                <h2 data-i18n="softSkills">Soft Skills</h2>
+                <div class="skills-container" id="softSkills">
+                    <!-- Soft skills will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="section" data-section-id="professionalSkills">
+                <h2 data-i18n="professionalSkills">Habilidades Profissionais</h2>
+                <div class="skills-container" id="professionalSkills">
+                    <!-- Professional skills will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="section" data-section-id="languages">
+                <h2 data-i18n="languages">Idiomas</h2>
+                <div class="skills-container" id="languages">
+                    <!-- Languages will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
     </div>
 
-    <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const moonIcon = document.querySelector('.moon-icon');
-        const sunIcon = document.querySelector('.sun-icon');
-        const body = document.body;
+    <div class="popup-overlay" id="projectsPopup">
+        <div class="popup-content">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <h2>Projetos</h2>
+            <div id="projectsList">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.classList.add(savedTheme);
-            updateIcons(savedTheme);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            const currentTheme = body.classList.contains('light-theme') ? 'light-theme' : '';
-            localStorage.setItem('theme', currentTheme);
-            updateIcons(currentTheme);
-        });
-
-        function updateIcons(theme) {
-            if (theme === 'light-theme') {
-                moonIcon.classList.remove('hidden');
-                sunIcon.classList.add('hidden');
-            } else {
-                moonIcon.classList.add('hidden');
-                sunIcon.classList.remove('hidden');
-            }
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/color-manager.js"></script>
+    <script src="js/language-manager.js"></script>
+    <script src="js/skills-manager.js"></script>
+    <script src="js/github-projects.js"></script>
+    <script src="js/section-manager.js"></script>
 </body>
 
 </html>
