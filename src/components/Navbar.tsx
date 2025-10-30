@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
@@ -20,6 +21,26 @@ const Navbar = () => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
+  const scrollToContact = () => {
+    if (location.pathname !== "/") {
+      // Se não estiver na página inicial, navega primeiro
+      navigate("/");
+      // Aguarda a navegação e depois faz o scroll
+      setTimeout(() => {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // Se já estiver na página inicial, apenas faz o scroll
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -53,12 +74,12 @@ const Navbar = () => {
               >
                 Blog
               </Link>
-              <a
-                href="#contact"
+              <button
+                onClick={scrollToContact}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Contato
-              </a>
+              </button>
             </div>
 
             <button
