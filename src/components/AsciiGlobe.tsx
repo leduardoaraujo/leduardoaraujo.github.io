@@ -9,26 +9,30 @@ declare global {
 const AsciiGlobe = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const initializedRef = useRef(false);
+  const animationFrameRef = useRef<number>();
 
   useEffect(() => {
     if (initializedRef.current || !containerRef.current) return;
 
     const loadThreeJS = () => {
       if (window.THREE) {
-        initGlobe();
+        setTimeout(() => initGlobe(), 100);
         return;
       }
 
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
       script.onload = () => {
-        initGlobe();
+        setTimeout(() => initGlobe(), 100);
+      };
+      script.onerror = () => {
+        console.error('Failed to load Three.js');
       };
       document.head.appendChild(script);
     };
 
     const initGlobe = () => {
-      if (!containerRef.current || initializedRef.current) return;
+      if (!containerRef.current || initializedRef.current || !window.THREE) return;
       initializedRef.current = true;
 
       const WIDTH = 48;
@@ -64,10 +68,13 @@ const AsciiGlobe = () => {
       scene.add(light2);
 
       camera.position.z = 345;
+
+      // Canvas precisa estar no DOM mas pode estar oculto
+      renderer.domElement.style.cssText = 'position: absolute; top: -9999px; left: -9999px; opacity: 0; pointer-events: none; visibility: hidden;';
       containerRef.current.appendChild(renderer.domElement);
 
       const gl = renderer.context;
-      const pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+      const pixels = new Uint8Array(WIDTH * HEIGHT * 4);
       const ASCII = "   ·—+=##";
 
       const outputEl = document.createElement('div');
@@ -97,24 +104,36 @@ const AsciiGlobe = () => {
         return br + ASCII[val];
       };
 
+      // Renderizar primeiro frame antes de começar o loop
+      renderer.render(scene, camera);
+      
       const render = () => {
-        requestAnimationFrame(render);
+        animationFrameRef.current = requestAnimationFrame(render);
         globe.rotation.y -= 0.003;
         renderer.render(scene, camera);
+        
+        // Ler pixels após renderizar
         gl.readPixels(0, 0, WIDTH, HEIGHT, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
         const text = grayscale10(pixels).map(asciify).join("");
         outputEl.innerHTML = text.split("\n").map(reverseString).join("\n");
       };
 
-      render();
+      // Aguardar um frame antes de começar o loop
+      setTimeout(() => {
+        render();
+      }, 50);
     };
 
     loadThreeJS();
 
     return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
       if (containerRef.current) {
         containerRef.current.innerHTML = '';
       }
+      initializedRef.current = false;
     };
   }, []);
 
@@ -123,26 +142,16 @@ const AsciiGlobe = () => {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet" />
-      <div className="relative">
+      <div className="relative inline-block">
         <div ref={containerRef} className="ascii-globe-container" />
         <style>{`
-          .ascii-globe-container canvas {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-            opacity: 0;
-            pointer-events: none;
-            visibility: hidden;
+          .ascii-globe-container {
+            display: inline-block;
           }
           .ascii-globe-container #ascii-output {
-            background-image: radial-gradient(
-              circle farthest-corner at 75% 75%,
-              rgba(0,0,16,1) 0%,
-              rgba(0,16,32,1) 50%,
-              rgb(20, 22, 22) 100%
-            );
+            background: hsl(var(--background));
             border-radius: 100%;
-            color: rgb(255, 255, 255);
+            color: hsl(var(--foreground));
             font-family: "Inconsolata", monospace;
             font-size: 3vmin;
             line-height: .55em;
@@ -152,6 +161,18 @@ const AsciiGlobe = () => {
             cursor: grab;
             user-select: none;
             display: inline-block;
+            padding: 1rem;
+            min-width: 200px;
+            min-height: 200px;
+          }
+          .dark .ascii-globe-container #ascii-output {
+            background-image: radial-gradient(
+              circle farthest-corner at 75% 75%,
+              hsl(0, 0%, 12%) 0%,
+              hsl(0, 0%, 10%) 50%,
+              hsl(0, 0%, 8%) 100%
+            );
+            color: hsl(0, 0%, 95%);
           }
           .ascii-globe-container #ascii-output:active {
             cursor: grabbing;
@@ -163,4 +184,3 @@ const AsciiGlobe = () => {
 };
 
 export default AsciiGlobe;
-
