@@ -9,6 +9,20 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: false,
+    minify: "esbuild",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
+  },
   plugins: [react()],
   resolve: {
     alias: {
