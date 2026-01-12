@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const email = "luizeduardocorporativo@gmail.com";
+  const email = "luiz.dataeng@gmail.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -15,17 +15,17 @@ const Contact = () => {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://www.linkedin.com/in/luiz-edu-araujo/",
+      href: "https://www.linkedin.com/in//",
     },
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/leduardoaraujo",
+      href: "https://github.com/",
     },
   ];
 
   return (
-    <footer id="contact" className="py-32 px-4 border-t border-border">
+    <footer id="contact" className="py-32 px-4 border-t border-border relative z-10">
       <div className="container max-w-4xl mx-auto">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-12">
           Contato

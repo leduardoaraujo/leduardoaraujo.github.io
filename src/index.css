@@ -2,95 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Portfolio Design System - Inspired by Wall of Portfolios
-All colors MUST be HSL.
-*/
+/* Portfolio Design System - Professional Dark Theme with Blue Accents */
 
 @layer base {
   :root {
-    /* Minimalist Design System - Sober Colors */
+    /* Light Mode - Clean whites and grays with blue accent */
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 220 20% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 220 20% 10%;
 
-    /* Primary - Subtle gray accent */
-    --primary: 0 0% 20%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary - Blue accent */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 20%;
 
-    /* Muted - Very subtle */
-    --muted: 0 0% 97%;
-    --muted-foreground: 0 0% 45%;
+    /* Muted */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Accent - Minimal */
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 20%;
+    /* Accent - Blue tint */
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 40%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 92%;
-    --input: 0 0% 92%;
-    --ring: 0 0% 20%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 20%;
-    --sidebar-border: 0 0% 92%;
-    --sidebar-ring: 0 0% 20%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 91% 95%;
+    --sidebar-accent-foreground: 217 91% 40%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
   }
 
   .dark {
-    /* Dark Mode - Still sober and minimal */
-    --background: 0 0% 8%;
+    /* Dark Mode - Deep blacks with blue glow accents */
+    --background: 220 20% 4%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 10%;
+    --card: 220 20% 6%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 10%;
+    --popover: 220 20% 6%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 90%;
-    --primary-foreground: 0 0% 10%;
+    /* Primary - Vibrant blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
+    /* Secondary */
+    --secondary: 220 20% 12%;
     --secondary-foreground: 0 0% 90%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    /* Muted */
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 10% 55%;
 
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 90%;
+    /* Accent - Blue glow */
+    --accent: 217 91% 15%;
+    --accent-foreground: 217 91% 70%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 0 0% 80%;
+    --border: 220 20% 15%;
+    --input: 220 20% 15%;
+    --ring: 217 91% 60%;
 
-    --sidebar-background: 0 0% 10%;
+    --sidebar-background: 220 20% 6%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 0 0% 90%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 0 0% 80%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 91% 15%;
+    --sidebar-accent-foreground: 217 91% 70%;
+    --sidebar-border: 220 20% 15%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 

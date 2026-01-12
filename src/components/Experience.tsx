@@ -1,15 +1,15 @@
 const experiences = [
   {
-    period: "2025 - Presente",
+    period: "2024 - Presente",
+    title: "Data Analyst",
+    company: "Gav Resorts",
+    description: "Engenharia de dados, desenvolvimento de dashboards, soluções BI e automações voltadas a dados.",
+  },
+  {
+    period: "2025 - 2025",
     title: "Data Engineer",
     company: "LG Lugar de Gente",
     description: "Implementação e migração de sistemas de dados para a nuvem.",
-  },
-  {
-    period: "2024 - 2025",
-    title: "Data Analyst",
-    company: "Gav Resorts",
-    description: "Desenvolvimento de dashboards, soluções BI e automações.",
   },
   {
     period: "2023 - 2024",
@@ -21,7 +21,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-32 px-4 border-t border-border">
+    <section id="experience" className="py-32 px-4 border-t border-border relative z-10 bg-background/90 backdrop-blur-sm">
       <div className="container max-w-4xl mx-auto">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-12">
           Experiência

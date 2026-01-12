@@ -19,7 +19,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-32 px-4 border-t border-border">
+    <section id="skills" className="py-32 px-4 border-t border-border relative z-10 bg-background/90 backdrop-blur-sm">
       <div className="container max-w-4xl mx-auto">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-12">
           Competências
