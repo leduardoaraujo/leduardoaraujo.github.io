@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Portfolio Design System - Professional Dark Theme with Blue Accents */
+/* Portfolio Design System - Minimal professional theme */
 
 @layer base {
   :root {
-    /* Light Mode - Clean whites and grays with blue accent */
-    --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --background: 240 6% 10%;
+    --foreground: 0 0% 96%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 20% 10%;
@@ -16,21 +15,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 10%;
 
-    /* Primary - Blue accent */
-    --primary: 217 91% 60%;
+    --primary: 79 92% 65%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary */
     --secondary: 220 14% 96%;
     --secondary-foreground: 220 20% 20%;
 
-    /* Muted */
     --muted: 220 14% 96%;
     --muted-foreground: 220 10% 45%;
 
-    /* Accent - Blue tint */
-    --accent: 217 91% 95%;
-    --accent-foreground: 217 91% 40%;
+    --accent: 79 92% 90%;
+    --accent-foreground: 84 84% 18%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
@@ -39,7 +34,7 @@
     --input: 220 13% 91%;
     --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 20% 20%;
@@ -52,8 +47,7 @@
   }
 
   .dark {
-    /* Dark Mode - Deep blacks with blue glow accents */
-    --background: 220 20% 4%;
+    --background: 222 22% 8%;
     --foreground: 0 0% 95%;
 
     --card: 220 20% 6%;
@@ -62,19 +56,15 @@
     --popover: 220 20% 6%;
     --popover-foreground: 0 0% 95%;
 
-    /* Primary - Vibrant blue */
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary */
     --secondary: 220 20% 12%;
     --secondary-foreground: 0 0% 90%;
 
-    /* Muted */
     --muted: 220 20% 12%;
     --muted-foreground: 220 10% 55%;
 
-    /* Accent - Blue glow */
     --accent: 217 91% 15%;
     --accent-foreground: 217 91% 70%;
 
@@ -108,11 +98,19 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   html {
     scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body,
+  #root {
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 

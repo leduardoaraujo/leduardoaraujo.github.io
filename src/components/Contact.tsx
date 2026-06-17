@@ -11,62 +11,43 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const socials = [
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in//",
-    },
-    {
-      name: "GitHub",
-      icon: Github,
-      href: "https://github.com/",
-    },
-  ];
-
   return (
-    <footer id="contact" className="py-32 px-4 border-t border-border relative z-10">
-      <div className="container max-w-4xl mx-auto">
-        <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-12">
-          Contato
+    <footer id="contact" className="bg-lime-300 px-4 py-12 text-zinc-950 md:py-14">
+      <div className="mx-auto w-full max-w-7xl">
+        <p className="mb-4 text-xs uppercase">004 / Contato</p>
+        <h2 className="mb-7 max-w-4xl font-heading text-[clamp(2.1rem,6vw,5rem)] font-medium leading-[0.92]">
+          Vamos construir a próxima interface dos seus dados?
         </h2>
 
-        <div className="space-y-8">
-          <p className="text-2xl md:text-3xl font-heading font-medium max-w-2xl">
-            Disponível para novos projetos e colaborações.
-          </p>
-
-          <div className="flex flex-wrap gap-6 pt-4">
-            {socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <social.icon className="h-5 w-5" />
-                <span className="text-sm">{social.name}</span>
-              </a>
-            ))}
-            
-            <button
-              onClick={copyEmail}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Mail className="h-5 w-5" />
-              <span className="text-sm">
-                {copied ? "Email copiado!" : email}
-              </span>
-            </button>
-          </div>
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={copyEmail}
+            className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-5 py-3 text-sm text-lime-200 transition hover:bg-zinc-800"
+          >
+            <Mail className="h-4 w-4" />
+            {copied ? "Email copiado" : email}
+          </button>
+          <a
+            href="https://www.linkedin.com/in/leduardoaraujo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-950 px-5 py-3 text-sm transition hover:bg-zinc-950 hover:text-lime-200"
+          >
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/leduardoaraujo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-950 px-5 py-3 text-sm transition hover:bg-zinc-950 hover:text-lime-200"
+          >
+            <Github className="h-4 w-4" />
+            GitHub
+          </a>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Luiz Eduardo Araújo
-          </p>
-        </div>
+        <p className="mt-8 text-sm">© {new Date().getFullYear()} Luiz Eduardo Araújo</p>
       </div>
     </footer>
   );
