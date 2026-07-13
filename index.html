@@ -1,35 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luiz Eduardo Araujo — dados, análise e IA</title>
+<meta name="description" content="Desenvolvedor de dados e IA. Construo produtos de dados, agentes e copilotos que operam sobre bancos de dados, Power BI e documentação — do banco de dados até a ferramenta que as pessoas usam.">
+<meta name="author" content="Luiz Eduardo Araujo">
+<link rel="canonical" href="https://ludoaraujo.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Luiz Eduardo Araujo">
+<meta property="og:title" content="Luiz Eduardo Araujo — dados, análise e IA">
+<meta property="og:description" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
+<meta property="og:url" content="https://ludoaraujo.com.br/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luiz Eduardo Araujo — dados, análise e IA">
+<meta name="twitter:description" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a1915'/%3E%3Ctext x='42' y='50' font-family='Helvetica Neue,Helvetica,Arial,sans-serif' font-size='52' font-weight='500' fill='%23f5f2ea' text-anchor='middle' dominant-baseline='central' letter-spacing='-2'%3Ele%3C/text%3E%3Ctext x='77' y='50' font-family='Helvetica Neue,Helvetica,Arial,sans-serif' font-size='52' font-weight='700' fill='%233f6b3a' text-anchor='middle' dominant-baseline='central'%3E.%3C/text%3E%3C/svg%3E">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg:#f5f2ea; --ink:#1a1915; --ink-soft:#413d34;
+    --nav:#6b6558; --muted:#8a8474; --line:#ddd8ca; --line-soft:#e6e1d3;
+    --accent:#3f6b3a;
+    color-scheme:light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#16150f; --ink:#f1eee4; --ink-soft:#c7c1b2;
+    --nav:#9b9484; --muted:#847e6e; --line:#302d26; --line-soft:#26241d;
+    --accent:#89b877;
+    color-scheme:dark;
+  }
   html{ -webkit-font-smoothing:antialiased; }
   body{ margin:0; }
-  *{ box-sizing:border-box; }
-  ::selection{ background:#1a1915; color:#f6f4ee; }
-  a{ color:#a2381a; text-decoration:none; }
-  a:hover{ color:#1a1915; }
+  *{ box-sizing:border-box; transition:background-color .35s ease, color .35s ease, border-color .35s ease; }
+  ::selection{ background:var(--ink); color:var(--bg); }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ color:var(--ink); }
+  #theme-toggle{ background:none; border:0; padding:0; margin:0; cursor:pointer; color:var(--nav); display:inline-flex; align-items:center; line-height:0; }
+  #theme-toggle:hover{ color:var(--ink); }
+  #theme-toggle .ico-sun{ display:none; }
+  :root[data-theme="dark"] #theme-toggle .ico-moon{ display:none; }
+  :root[data-theme="dark"] #theme-toggle .ico-sun{ display:inline; }
 </style>
 </helmet>
-<div style="background:#f5f2ea;color:#1a1915;font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;min-height:100vh;">
+<div style="background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:18px;line-height:1.65;min-height:100vh;">
   <div style="max-width:760px;margin:0 auto;padding:0 24px;">
 
     <!-- HEADER -->
     <header style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 0 0;">
-      <a href="#top" style="color:#1a1915;font-size:17px;font-weight:500;">Luiz Eduardo Araujo</a>
-      <nav style="display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.02em;">
-        <a href="#trabalho" style="color:#6b6558;">trabalho</a>
-        <a href="#sobre" style="color:#6b6558;">sobre</a>
-        <a href="#contato" style="color:#6b6558;">contato</a>
+      <a href="#top" style="color:var(--ink);font-size:17px;font-weight:500;">Luiz Eduardo Araujo</a>
+      <nav style="display:flex;gap:22px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.02em;">
+        <a href="#trabalho" style="color:var(--nav);">trabalho</a>
+        <a href="#sobre" style="color:var(--nav);">sobre</a>
+        <a href="#contato" style="color:var(--nav);">contato</a>
+        <button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <svg class="ico ico-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="ico ico-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
       </nav>
     </header>
 
@@ -38,97 +73,110 @@
     <!-- INTRO -->
     <section style="padding:clamp(64px,13vh,130px) 0 clamp(48px,8vh,84px);">
       
-      <h1 style="font-weight:400;font-size:clamp(29px,4.4vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 30px;max-width:20ch;">Trabalho com dados, análise e inteligência artificial, do banco de dados até a ferramenta que as pessoas usam.</h1>
-      <p style="font-size:19px;line-height:1.6;color:#413d34;max-width:60ch;margin:0 0 18px;">Comecei em analytics, resolvendo problemas de negócio com Power BI, SQL e Python. Aprendi de onde os dados vêm, como as métricas são definidas e por que uma resposta tecnicamente correta pode estar errada para o negócio.</p>
-      <p style="font-size:19px;line-height:1.6;color:#413d34;max-width:60ch;margin:0;">Hoje construo o que fica <em style="font-style:italic;">depois</em> da análise: aplicações, agentes e visualizações que operam sobre bancos de dados, modelos semânticos e documentação — não só o gráfico ou a consulta, mas a ferramenta inteira.</p>
+      <h1 style="font-weight:400;font-size:clamp(29px,4.4vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 30px;max-width:18ch;">Dados, análise e IA — do banco de dados até a ferramenta que as pessoas usam.</h1>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0;">Comecei em analytics com Power BI, SQL e Python. Hoje construo o que vem <em style="font-style:italic;">depois</em> da análise: aplicações, agentes e visualizações sobre bancos de dados, modelos semânticos e documentação. Não só o gráfico — a ferramenta inteira.</p>
     </section>
 
     <!-- O QUE FAÇO -->
-    <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid #ddd8ca;padding-top:clamp(40px,6vh,64px);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.03em;color:#8a8474;margin-bottom:24px;">o que faço</div>
+    <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">o que faço</div>
       <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:62ch;">
-        <li style="display:flex;gap:16px;"><span style="color:#a2381a;font-family:'JetBrains Mono',monospace;font-size:15px;">/</span><span>Produtos de dados e ferramentas internas sobre dados reais da empresa.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:#a2381a;font-family:'JetBrains Mono',monospace;font-size:15px;">/</span><span>Agentes e copilotos de IA que consultam bancos de dados, Power BI e documentação.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:#a2381a;font-family:'JetBrains Mono',monospace;font-size:15px;">/</span><span>Integrações, automações e pipelines entre sistemas.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:#a2381a;font-family:'JetBrains Mono',monospace;font-size:15px;">/</span><span>BI, modelos semânticos e visualização de dados.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Produtos de dados e ferramentas internas sobre dados reais da empresa.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Agentes e copilotos de IA que consultam bancos de dados, Power BI e documentação.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Integrações, automações e pipelines entre sistemas.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>BI, modelos semânticos e visualização de dados.</span></li>
       </ul>
     </section>
 
     <!-- TRABALHO -->
-    <section id="trabalho" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid #ddd8ca;padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.03em;color:#8a8474;margin-bottom:30px;">trabalho selecionado</div>
+    <section id="trabalho" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:30px;">trabalho selecionado</div>
 
-      <article style="padding:26px 0;border-top:1px solid #e6e1d3;transition:opacity .2s ease;" style-hover="opacity:.62">
+      <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
-          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;">GAV Insights</h2>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;">copiloto corporativo</span>
+          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">GAV Insights</a></h2>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">copiloto corporativo</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:#413d34;margin:0 0 12px;max-width:64ch;">Conversa em linguagem natural sobre o ecossistema analítico da empresa: seleção de relatórios, consultas ao Power BI e visualização de resultados — respeitando regras de negócio, identidade do usuário e políticas de execução antes de responder.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8474;margin:0;">Python · React · Power BI · Fabric · PostgreSQL · SQL Server · MCP · RAG · DAX</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Copiloto que conversa em linguagem natural sobre o ecossistema analítico da empresa: seleciona relatórios, consulta o Power BI e mostra resultados — respeitando regras de negócio e permissões antes de responder. Seu motor de retrieval é open-source, o <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.</p>
+        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · React · Power BI · Fabric · PostgreSQL · SQL Server · MCP · RAG · DAX</p>
       </article>
 
-      <article style="padding:26px 0;border-top:1px solid #e6e1d3;transition:opacity .2s ease;" style-hover="opacity:.62">
+      <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
-          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;">Orquestra MCP</h2>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;">arquitetura de agentes</span>
+          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/forgeflow" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">ForgeFlow</a></h2>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">framework de dados</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:#413d34;margin:0 0 12px;max-width:64ch;">Uma camada segura entre a IA e as plataformas de dados. Interpreta pedidos em linguagem natural e direciona cada tarefa para Power BI, PostgreSQL e SQL Server, avaliando permissões e confirmando antes de executar. Consultas em preview; operações destrutivas bloqueadas.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8474;margin:0;">Python · FastAPI · MCP · OpenAI · PostgreSQL · SQL Server</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Framework ETL para ingestão de APIs, com pipelines declarados em YAML: chamadas assíncronas, transformação de JSON e entrega simultânea para múltiplos destinos.</p>
+        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · asyncio · FastAPI · PostgreSQL · DuckDB · Airflow</p>
       </article>
 
-      <article style="padding:26px 0;border-top:1px solid #e6e1d3;transition:opacity .2s ease;" style-hover="opacity:.62">
+      <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
-          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;">Power BI AI Hub</h2>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;">full stack</span>
+          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/lab-ocr-engine" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Lab OCR Engine</a></h2>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">visão computacional</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:#413d34;margin:0 0 12px;max-width:64ch;">Linguagem natural como interface para o Power BI. Explora modelos semânticos, medidas, relacionamentos e DAX por conversa, escondendo a configuração técnica — com modos distintos para consultar e para alterar modelos.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8474;margin:0;">React · TypeScript · FastAPI · WebSocket · MCP · Docker</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">OCR local-first para documentos fiscais brasileiros. Preserva blocos, coordenadas e incerteza — validação determinística primeiro, LLM só para estruturação pontual.</p>
+        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · PaddleOCR · OpenCV · Pydantic · Typer · pytest</p>
       </article>
 
-      <article style="padding:26px 0;border-top:1px solid #e6e1d3;border-bottom:1px solid #e6e1d3;transition:opacity .2s ease;" style-hover="opacity:.62">
+      <article style="padding:26px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
-          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;">OCR Fiscal Engine</h2>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;">visão computacional</span>
+          <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/schemascribe" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Schemascribe</a></h2>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">documentação autônoma</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:#413d34;margin:0 0 12px;max-width:64ch;">Motor local-first para documentos fiscais brasileiros. OCR que preserva blocos, coordenadas e evidências de cada etapa, com validações determinísticas e privacidade em primeiro lugar — LLMs entram só quando agregam à estruturação.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8474;margin:0;">Python · PaddleOCR · OpenCV · Pydantic · pytest</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Agente que gera documentação técnica a partir de esquemas PostgreSQL via MCP. Documentação viva em Markdown, sem manutenção manual.</p>
+        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · MCP · PostgreSQL · Click · YAML</p>
       </article>
     </section>
     <!-- SOBRE -->
-    <section id="sobre" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid #ddd8ca;padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.03em;color:#8a8474;margin-bottom:24px;">sobre</div>
-      <p style="font-size:19px;line-height:1.6;color:#413d34;margin:0 0 18px;max-width:62ch;">Gosto de problemas que exigem juntar código, arquitetura, contexto de negócio e uma experiência simples para quem usa. Meu interesse está em usar IA como interface para sistemas e dados — sem ignorar as regras e os riscos envolvidos.</p>
-      <p style="font-size:19px;line-height:1.6;color:#413d34;margin:0;max-width:62ch;">Fora do trabalho, fotografo, escrevo e mantenho projetos pessoais ligados a música.</p>
+    <section id="sobre" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">sobre</div>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0 0 18px;max-width:60ch;">Gosto de problemas que juntam código, arquitetura e contexto de negócio numa experiência simples de usar. Meu interesse é IA como interface para sistemas e dados — sem ignorar regras e riscos.</p>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:60ch;">Fora do trabalho, fotografo, escrevo e mantenho projetos pessoais ligados a música.</p>
     </section>
 
     <!-- FERRAMENTAS -->
-    <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid #ddd8ca;padding-top:clamp(40px,6vh,64px);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.03em;color:#8a8474;margin-bottom:24px;">ferramentas</div>
+    <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">ferramentas</div>
       <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:14px 28px;font-size:16px;align-items:baseline;">
-        <dt style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;letter-spacing:.02em;">dev</dt>
-        <dd style="margin:0;color:#413d34;">Python, FastAPI, React, TypeScript, Node.js, APIs, WebSocket</dd>
-        <dt style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;letter-spacing:.02em;">dados</dt>
-        <dd style="margin:0;color:#413d34;">PostgreSQL, SQL Server, SQL, ETL, modelagem, Power Query</dd>
-        <dt style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;letter-spacing:.02em;">analytics</dt>
-        <dd style="margin:0;color:#413d34;">Power BI, DAX, Fabric, modelos semânticos, visualização</dd>
-        <dt style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#8a8474;letter-spacing:.02em;">ia</dt>
-        <dd style="margin:0;color:#413d34;">LLMs, agentes, MCP, RAG, tool calling, OCR</dd>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">dev</dt>
+        <dd style="margin:0;color:var(--ink-soft);">Python, FastAPI, React, TypeScript, Node.js, APIs, WebSocket</dd>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">dados</dt>
+        <dd style="margin:0;color:var(--ink-soft);">PostgreSQL, SQL Server, SQL, ETL, modelagem, Power Query</dd>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">analytics</dt>
+        <dd style="margin:0;color:var(--ink-soft);">Power BI, DAX, Fabric, modelos semânticos, visualização</dd>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">ia</dt>
+        <dd style="margin:0;color:var(--ink-soft);">LLMs, agentes, MCP, RAG, tool calling, OCR</dd>
       </dl>
     </section>
 
     <!-- CONTATO -->
-    <footer id="contato" style="padding:clamp(40px,6vh,64px) 0 64px;border-top:1px solid #ddd8ca;scroll-margin-top:30px;">
-      <p style="font-size:19px;line-height:1.55;color:#413d34;margin:0 0 22px;max-width:52ch;">Tem dados, regras e processos que ainda não viraram produto? Escreva.</p>
+    <footer id="contato" style="padding:clamp(40px,6vh,64px) 0 64px;border-top:1px solid var(--line);scroll-margin-top:30px;">
+      <p style="font-size:19px;line-height:1.55;color:var(--ink-soft);margin:0 0 22px;max-width:52ch;">Tem dados, regras e processos que ainda não viraram produto? Escreva.</p>
       <div style="display:flex;flex-wrap:wrap;gap:26px;font-size:17px;">
           <a href="/cdn-cgi/l/email-protection#4c2f2322382d38230c203928232d3e2d392623622f2321622e3e"><span class="__cf_email__" data-cfemail="aecdc1c0dacfdac1eec2dbcac1cfdccfdbc4c180cdc1c380ccdc">contato@ludoaraujo.com.br</span></a>
         <a href="https://github.com/leduardoaraujo" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/luiz-edu-araujo/" target="_blank">LinkedIn</a>
+        <a href="./resume.pdf" download="Luiz-Eduardo-Araujo-CV.pdf">Currículo</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:40px;">
+        <a href="#top" aria-label="Luiz Eduardo Araujo — voltar ao topo" style="line-height:0;display:inline-block;">
+          <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Luiz Eduardo Araujo" style="display:block;">
+            <rect width="100" height="100" rx="22" fill="var(--ink)"></rect>
+            <text x="42" y="50" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="500" fill="var(--bg)" text-anchor="middle" dominant-baseline="central" letter-spacing="-2">le</text>
+            <text x="77" y="50" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="var(--accent)" text-anchor="middle" dominant-baseline="central">.</text>
+          </svg>
+        </a>
+        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">© 2026 Luiz Eduardo Araujo</span>
       </div>
     </footer>
 
   </div>
 </div>
 </x-dc>
+<script>
+(function(){var b=document.getElementById('theme-toggle');if(!b)return;b.addEventListener('click',function(){var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);try{localStorage.setItem('theme',next);}catch(e){}});})();
+</script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}"></script>
 </body>
 </html>
