@@ -3,24 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Luiz Eduardo Araujo — dados, análise e IA</title>
-<meta name="description" content="Desenvolvedor de dados e IA. Construo produtos de dados, agentes e copilotos que operam sobre bancos de dados, Power BI e documentação — do banco de dados até a ferramenta que as pessoas usam.">
+<title data-i18n="meta.title">Luiz Eduardo Araujo — dados, análise e IA</title>
+<meta name="description" data-i18n-attr="content:meta.description" content="Desenvolvedor de dados e IA. Construo produtos de dados, agentes e copilotos que operam sobre bancos de dados, Power BI e documentação — do banco de dados até a ferramenta que as pessoas usam.">
 <meta name="author" content="Luiz Eduardo Araujo">
 <link rel="canonical" href="https://ludoaraujo.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Luiz Eduardo Araujo">
-<meta property="og:title" content="Luiz Eduardo Araujo — dados, análise e IA">
-<meta property="og:description" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
+<meta property="og:title" data-i18n-attr="content:meta.title" content="Luiz Eduardo Araujo — dados, análise e IA">
+<meta property="og:description" data-i18n-attr="content:meta.ogdescription" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
 <meta property="og:url" content="https://ludoaraujo.com.br/">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luiz Eduardo Araujo — dados, análise e IA">
-<meta name="twitter:description" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
+<meta name="twitter:title" data-i18n-attr="content:meta.title" content="Luiz Eduardo Araujo — dados, análise e IA">
+<meta name="twitter:description" data-i18n-attr="content:meta.ogdescription" content="Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a1915'/%3E%3Ctext x='42' y='50' font-family='Helvetica Neue,Helvetica,Arial,sans-serif' font-size='52' font-weight='500' fill='%23f5f2ea' text-anchor='middle' dominant-baseline='central' letter-spacing='-2'%3Ele%3C/text%3E%3Ctext x='77' y='50' font-family='Helvetica Neue,Helvetica,Arial,sans-serif' font-size='52' font-weight='700' fill='%233f6b3a' text-anchor='middle' dominant-baseline='central'%3E.%3C/text%3E%3C/svg%3E">
 <script>
 (function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+(function(){try{var v=['pt','en','es'],s=localStorage.getItem('lang');if(v.indexOf(s)<0){var n=(navigator.language||'en').toLowerCase();s=n.indexOf('pt')===0?'pt':n.indexOf('es')===0?'es':'en';}document.documentElement.setAttribute('lang',{pt:'pt-BR',en:'en',es:'es'}[s]);}catch(e){}})();
 </script>
 <script src="./support.js"></script>
+<script src="./translations.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -51,6 +53,18 @@
   #theme-toggle .ico-sun{ display:none; }
   :root[data-theme="dark"] #theme-toggle .ico-moon{ display:none; }
   :root[data-theme="dark"] #theme-toggle .ico-sun{ display:inline; }
+  .lang-switch{ position:relative; display:inline-flex; align-items:center; }
+  .lang-btn{ background:none; border:0; padding:0; margin:0; cursor:pointer; font:inherit; letter-spacing:.02em; color:var(--nav); }
+  .lang-btn:hover{ color:var(--accent) !important; }
+  #lang-toggle{ display:inline-flex; align-items:center; gap:4px; }
+  #lang-toggle .caret{ transition:transform .2s ease; }
+  #lang-toggle[aria-expanded="true"]{ color:var(--ink); }
+  #lang-toggle[aria-expanded="true"] .caret{ transform:rotate(180deg); }
+  .lang-menu{ position:absolute; top:calc(100% + 10px); right:0; z-index:20; display:flex; flex-direction:column; gap:1px; min-width:126px; padding:6px; background:var(--bg); border:1px solid var(--line); border-radius:9px; box-shadow:0 8px 26px rgba(0,0,0,.14); }
+  .lang-menu[hidden]{ display:none; }
+  .lang-opt{ text-align:left; padding:7px 10px; border-radius:6px; white-space:nowrap; }
+  .lang-opt:hover{ color:var(--accent) !important; background:var(--line-soft); }
+  .lang-opt[aria-pressed="true"]{ color:var(--accent); }
 </style>
 </helmet>
 <div style="background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:18px;line-height:1.65;min-height:100vh;">
@@ -60,10 +74,21 @@
     <header style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 0 0;">
       <a href="#top" style="color:var(--ink);font-size:17px;font-weight:500;">Luiz Eduardo Araujo</a>
       <nav style="display:flex;gap:22px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.02em;">
-        <a href="#trabalho" style="color:var(--nav);">trabalho</a>
-        <a href="#sobre" style="color:var(--nav);">sobre</a>
-        <a href="#contato" style="color:var(--nav);">contato</a>
-        <button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <a href="#trabalho" style="color:var(--nav);" data-i18n="nav.work">trabalho</a>
+        <a href="#sobre" style="color:var(--nav);" data-i18n="nav.about">sobre</a>
+        <a href="#contato" style="color:var(--nav);" data-i18n="nav.contact">contato</a>
+        <span class="lang-switch">
+          <button id="lang-toggle" class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Idioma" data-i18n-attr="aria-label:lang.aria">
+            <span data-lang-current>PT</span>
+            <svg class="caret" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div id="lang-menu" class="lang-menu" role="menu" hidden>
+            <button class="lang-btn lang-opt" type="button" role="menuitem" data-lang-btn="pt">Português</button>
+            <button class="lang-btn lang-opt" type="button" role="menuitem" data-lang-btn="en">English</button>
+            <button class="lang-btn lang-opt" type="button" role="menuitem" data-lang-btn="es">Español</button>
+          </div>
+        </span>
+        <button id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema" data-i18n-attr="aria-label:theme.aria;title:theme.title">
           <svg class="ico ico-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="ico ico-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
@@ -75,97 +100,97 @@
     <!-- INTRO -->
     <section style="padding:clamp(64px,13vh,130px) 0 clamp(48px,8vh,84px);">
       
-      <h1 style="font-weight:400;font-size:clamp(29px,4.4vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 30px;max-width:18ch;">Dados, análise e IA — do banco de dados até a ferramenta que as pessoas usam.</h1>
-      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0;">Comecei em analytics com Power BI, SQL e Python. Hoje construo o que vem <em style="font-style:italic;">depois</em> da análise: aplicações, agentes e visualizações sobre bancos de dados, modelos semânticos e documentação. Não só o gráfico — a ferramenta inteira.</p>
+      <h1 style="font-weight:400;font-size:clamp(29px,4.4vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 30px;max-width:18ch;" data-i18n="hero.h1">Dados, análise e IA — do banco de dados até a ferramenta que as pessoas usam.</h1>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0;" data-i18n="hero.p">Comecei em analytics com Power BI, SQL e Python. Hoje construo o que vem <em style="font-style:italic;">depois</em> da análise: aplicações, agentes e visualizações sobre bancos de dados, modelos semânticos e documentação. Não só o gráfico — a ferramenta inteira.</p>
     </section>
 
     <!-- O QUE FAÇO -->
     <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">o que faço</div>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;" data-i18n="do.label">o que faço</div>
       <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:62ch;">
-        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Produtos de dados e ferramentas internas sobre dados reais da empresa.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Agentes e copilotos de IA que consultam bancos de dados, Power BI e documentação.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>Integrações, automações e pipelines entre sistemas.</span></li>
-        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span>BI, modelos semânticos e visualização de dados.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span data-i18n="do.1">Produtos de dados e ferramentas internas sobre dados reais da empresa.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span data-i18n="do.2">Agentes e copilotos de IA que consultam bancos de dados, Power BI e documentação.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span data-i18n="do.3">Integrações, automações e pipelines entre sistemas.</span></li>
+        <li style="display:flex;gap:16px;"><span style="color:var(--accent);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;">/</span><span data-i18n="do.4">BI, modelos semânticos e visualização de dados.</span></li>
       </ul>
     </section>
 
     <!-- TRABALHO -->
     <section id="trabalho" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:30px;">trabalho selecionado</div>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:30px;" data-i18n="work.label">trabalho selecionado</div>
 
       <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
           <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">GAV Insights</a></h2>
-          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">copiloto corporativo</span>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);" data-i18n="work.gav.cat">copiloto corporativo</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Copiloto que conversa em linguagem natural sobre o ecossistema analítico da empresa: seleciona relatórios, consulta o Power BI e mostra resultados — respeitando regras de negócio e permissões antes de responder. Seu motor de retrieval é open-source, o <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;" data-i18n="work.gav.desc">Copiloto que conversa em linguagem natural sobre o ecossistema analítico da empresa: seleciona relatórios, consulta o Power BI e mostra resultados — respeitando regras de negócio e permissões antes de responder. Seu motor de retrieval é open-source, o <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.</p>
         <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · React · Power BI · Fabric · PostgreSQL · SQL Server · MCP · RAG · DAX</p>
       </article>
 
       <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
           <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/pipelinekit" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">pipelinekit</a></h2>
-          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">framework de dados</span>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);" data-i18n="work.pipelinekit.cat">framework de dados</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Framework ETL para ingestão de APIs, com pipelines declarados em YAML: chamadas assíncronas, transformação de JSON e entrega simultânea para múltiplos destinos.</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;" data-i18n="work.pipelinekit.desc">Framework ETL para ingestão de APIs, com pipelines declarados em YAML: chamadas assíncronas, transformação de JSON e entrega simultânea para múltiplos destinos.</p>
         <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · asyncio · FastAPI · PostgreSQL · DuckDB · Airflow</p>
       </article>
 
       <article style="padding:26px 0;border-top:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
           <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/lab-ocr-engine" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Lab OCR Engine</a></h2>
-          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">visão computacional</span>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);" data-i18n="work.ocr.cat">visão computacional</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">OCR local-first para documentos fiscais brasileiros. Preserva blocos, coordenadas e incerteza — validação determinística primeiro, LLM só para estruturação pontual.</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;" data-i18n="work.ocr.desc">OCR local-first para documentos fiscais brasileiros. Preserva blocos, coordenadas e incerteza — validação determinística primeiro, LLM só para estruturação pontual.</p>
         <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · PaddleOCR · OpenCV · Pydantic · Typer · pytest</p>
       </article>
 
       <article style="padding:26px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);transition:opacity .2s ease;" style-hover="opacity:.62">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px;">
           <h2 style="font-weight:500;font-size:24px;margin:0;letter-spacing:-.01em;"><a href="https://github.com/leduardoaraujo/schemascribe" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--line);">Schemascribe</a></h2>
-          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);">documentação autônoma</span>
+          <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);" data-i18n="work.schema.cat">documentação autônoma</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;">Agente que gera documentação técnica a partir de esquemas PostgreSQL via MCP. Documentação viva em Markdown, sem manutenção manual.</p>
+        <p style="font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;max-width:64ch;" data-i18n="work.schema.desc">Agente que gera documentação técnica a partir de esquemas PostgreSQL via MCP. Documentação viva em Markdown, sem manutenção manual.</p>
         <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--muted);margin:0;">Python · MCP · PostgreSQL · Click · YAML</p>
       </article>
     </section>
     <!-- SOBRE -->
     <section id="sobre" style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);scroll-margin-top:30px;">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">sobre</div>
-      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0 0 18px;max-width:60ch;">Gosto de problemas que juntam código, arquitetura e contexto de negócio numa experiência simples de usar. Meu interesse é IA como interface para sistemas e dados — sem ignorar regras e riscos.</p>
-      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:60ch;">Fora do trabalho, fotografo, escrevo e mantenho projetos pessoais ligados a música.</p>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;" data-i18n="about.label">sobre</div>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0 0 18px;max-width:60ch;" data-i18n="about.p1">Gosto de problemas que juntam código, arquitetura e contexto de negócio numa experiência simples de usar. Meu interesse é IA como interface para sistemas e dados — sem ignorar regras e riscos.</p>
+      <p style="font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:60ch;" data-i18n="about.p2">Fora do trabalho, fotografo, escrevo e mantenho projetos pessoais ligados a música.</p>
     </section>
 
     <!-- FERRAMENTAS -->
     <section style="padding:0 0 clamp(56px,9vh,96px);border-top:1px solid var(--line);padding-top:clamp(40px,6vh,64px);">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;">ferramentas</div>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-bottom:24px;" data-i18n="tools.label">ferramentas</div>
       <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:14px 28px;font-size:16px;align-items:baseline;">
-        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">dev</dt>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;" data-i18n="tools.dev">dev</dt>
         <dd style="margin:0;color:var(--ink-soft);">Python, FastAPI, React, TypeScript, Node.js, APIs, WebSocket</dd>
-        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">dados</dt>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;" data-i18n="tools.data">dados</dt>
         <dd style="margin:0;color:var(--ink-soft);">PostgreSQL, SQL Server, SQL, ETL, modelagem, Power Query</dd>
-        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">analytics</dt>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;" data-i18n="tools.analytics">analytics</dt>
         <dd style="margin:0;color:var(--ink-soft);">Power BI, DAX, Fabric, modelos semânticos, visualização</dd>
-        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;">ia</dt>
+        <dt style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--muted);letter-spacing:.02em;" data-i18n="tools.ai">ia</dt>
         <dd style="margin:0;color:var(--ink-soft);">LLMs, agentes, MCP, RAG, tool calling, OCR</dd>
       </dl>
     </section>
 
     <!-- CONTATO -->
     <footer id="contato" style="padding:clamp(40px,6vh,64px) 0 64px;border-top:1px solid var(--line);scroll-margin-top:30px;">
-      <p style="font-size:19px;line-height:1.55;color:var(--ink-soft);margin:0 0 22px;max-width:52ch;">Tem dados, regras e processos que ainda não viraram produto? Escreva.</p>
+      <p style="font-size:19px;line-height:1.55;color:var(--ink-soft);margin:0 0 22px;max-width:52ch;" data-i18n="contact.p">Tem dados, regras e processos que ainda não viraram produto? Escreva.</p>
       <div style="display:flex;flex-wrap:wrap;gap:26px;font-size:17px;">
         <span style="position:relative;display:inline-flex;align-items:center;">
-          <button type="button" id="copy-email" data-cfemail="aecdc1c0dacfdac1eec2dbcac1cfdccfdbc4c180cdc1c380ccdc" title="Copiar e-mail" aria-label="Copiar endereço de e-mail" style="background:none;border:0;padding:0;margin:0;cursor:pointer;font:inherit;color:var(--accent);line-height:inherit;"><span class="__cf_email__" data-cfemail="aecdc1c0dacfdac1eec2dbcac1cfdccfdbc4c180cdc1c380ccdc">contato@ludoaraujo.com.br</span></button>
-          <span id="copy-tip" role="status" aria-live="polite" style="position:absolute;left:0;bottom:calc(100% + 9px);background:var(--ink);color:var(--bg);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.02em;padding:4px 9px;border-radius:6px;white-space:nowrap;opacity:0;visibility:hidden;transition:opacity .2s ease;pointer-events:none;">Copiado!</span>
+          <button type="button" id="copy-email" data-cfemail="aecdc1c0dacfdac1eec2dbcac1cfdccfdbc4c180cdc1c380ccdc" title="Copiar e-mail" aria-label="Copiar endereço de e-mail" data-i18n-attr="title:contact.copy.title;aria-label:contact.copy.aria" style="background:none;border:0;padding:0;margin:0;cursor:pointer;font:inherit;color:var(--accent);line-height:inherit;"><span class="__cf_email__" data-cfemail="aecdc1c0dacfdac1eec2dbcac1cfdccfdbc4c180cdc1c380ccdc">contato@ludoaraujo.com.br</span></button>
+          <span id="copy-tip" role="status" aria-live="polite" data-i18n="contact.copied" style="position:absolute;left:0;bottom:calc(100% + 9px);background:var(--ink);color:var(--bg);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;letter-spacing:.02em;padding:4px 9px;border-radius:6px;white-space:nowrap;opacity:0;visibility:hidden;transition:opacity .2s ease;pointer-events:none;">Copiado!</span>
         </span>
         <a href="https://github.com/leduardoaraujo" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/luiz-edu-araujo/" target="_blank">LinkedIn</a>
-        <a href="./resume.pdf" download="Luiz-Eduardo-Araujo-CV.pdf">Currículo</a>
+        <a href="./resume.pdf" download="Luiz-Eduardo-Araujo-CV.pdf" data-i18n="contact.resume">Currículo</a>
       </div>
       <div style="display:flex;align-items:center;gap:14px;margin-top:40px;">
-        <a href="#top" aria-label="Luiz Eduardo Araujo — voltar ao topo" style="line-height:0;display:inline-block;">
+        <a href="#top" aria-label="Luiz Eduardo Araujo — voltar ao topo" data-i18n-attr="aria-label:contact.backtop.aria" style="line-height:0;display:inline-block;">
           <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Luiz Eduardo Araujo" style="display:block;">
             <rect width="100" height="100" rx="22" fill="var(--ink)"></rect>
             <text x="42" y="50" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="500" fill="var(--bg)" text-anchor="middle" dominant-baseline="central" letter-spacing="-2">le</text>
