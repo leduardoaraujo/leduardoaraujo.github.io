@@ -162,6 +162,10 @@
     });
   }
 
+  function arrowIcon() {
+    return "<svg class=\"guided-contact__arrow-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" y1=\"12\" x2=\"20\" y2=\"12\"></line><polyline points=\"13 5 20 12 13 19\"></polyline></svg>";
+  }
+
   function loadEmailJs() {
     return new Promise(function (resolve, reject) {
       if (window.emailjs) return resolve(window.emailjs);
@@ -180,13 +184,16 @@
     style.textContent = [
       ".guided-contact{width:100%;margin:32px 0 30px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}",
       ".guided-contact button,.guided-contact input,.guided-contact textarea{font-family:inherit}",
-      ".guided-contact__launcher{width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;padding:22px 0;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;color:var(--ink);text-align:left;cursor:pointer}",
+      ".guided-contact__launcher{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:26px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--ink) 4%,transparent);color:var(--ink);text-align:left;cursor:pointer}",
+      ".guided-contact__launcher:hover{border-color:var(--accent)}",
       ".guided-contact__launcher:hover .guided-contact__launcher-title{color:var(--accent)}",
       ".guided-contact__launcher:hover .guided-contact__arrow{transform:translateX(4px)}",
-      ".guided-contact__eyebrow{display:block;margin-bottom:5px;color:var(--muted);font-size:11px;line-height:1.2;text-transform:lowercase}",
+      ".guided-contact__badge{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:11px;line-height:1.2;text-transform:lowercase}",
+      ".guided-contact__badge-icon{width:15px;height:15px;flex:0 0 auto}",
       ".guided-contact__launcher-title{display:block;color:var(--ink);font-size:20px;line-height:1.35;transition:color .2s ease}",
-      ".guided-contact__launcher-side{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:11px;white-space:nowrap}",
-      ".guided-contact__arrow{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:20px;line-height:1;transition:transform .2s ease,background-color .35s ease,color .35s ease}",
+      ".guided-contact__launcher-side{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;color:var(--muted);font-size:11px}",
+      ".guided-contact__arrow{flex:0 0 auto;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--bg);transition:transform .2s ease,background-color .35s ease,color .35s ease}",
+      ".guided-contact__arrow-icon{width:16px;height:16px;flex:0 0 auto}",
       ".guided-contact__panel{position:relative;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);overflow:hidden}",
       ".guided-contact__panel[hidden],.guided-contact.is-open .guided-contact__launcher{display:none}",
       ".guided-contact__top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0 13px}",
@@ -208,7 +215,7 @@
       ".guided-contact__submit{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 16px;border:1px solid var(--ink);border-radius:4px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap}",
       ".guided-contact__submit:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}",
       ".guided-contact__submit:disabled{opacity:.5;cursor:not-allowed}",
-      ".guided-contact__submit-arrow{font-size:17px;font-weight:400;line-height:1}",
+      ".guided-contact__submit-arrow{display:inline-flex}",
       ".guided-contact__error{min-height:18px;margin:10px 0 0;color:var(--accent);font-size:12px;line-height:1.45}",
       ".guided-contact__topics{display:flex;flex-wrap:wrap;gap:7px;margin:-10px 0 22px}",
       ".guided-contact__topic{padding:7px 10px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--nav);font-size:12px;line-height:1;cursor:pointer}",
@@ -228,7 +235,7 @@
       ".guided-contact__success h2{margin:0 0 5px;font-size:25px;font-weight:400;line-height:1.2}",
       ".guided-contact__success p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.5}",
       "@keyframes guided-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}",
-      "@media (max-width:560px){.guided-contact{margin-top:26px}.guided-contact__launcher{padding:18px 0}.guided-contact__launcher-title{font-size:18px}.guided-contact__launcher-side>span{display:none}.guided-contact__stage{min-height:270px}.guided-contact__form{grid-template-columns:1fr}.guided-contact__submit{justify-self:start}.guided-contact__review{grid-template-columns:82px 1fr}.guided-contact__trail{gap:5px 12px}.guided-contact__question{font-size:26px}}",
+      "@media (max-width:560px){.guided-contact{margin-top:26px}.guided-contact__launcher{padding:20px;gap:12px}.guided-contact__launcher-title{font-size:18px}.guided-contact__launcher-side{font-size:10px}.guided-contact__launcher-meta{max-width:15ch}.guided-contact__stage{min-height:270px}.guided-contact__form{grid-template-columns:1fr}.guided-contact__submit{justify-self:start}.guided-contact__review{grid-template-columns:82px 1fr}.guided-contact__trail{gap:5px 12px}.guided-contact__question{font-size:26px}}",
       "@media (prefers-reduced-motion:reduce){.guided-contact *{animation:none!important;transition:none!important}}"
     ].join("");
     document.head.appendChild(style);
@@ -290,7 +297,7 @@
         "<dt>" + escapeHtml(t("summaryTopic")) + "</dt><dd>" + escapeHtml(state.data.topic) + "</dd>",
         "<dt>" + escapeHtml(t("summaryMessage")) + "</dt><dd>" + escapeHtml(state.data.message) + "</dd>",
         "</dl>",
-        "<div class=\"guided-contact__review-actions\"><button class=\"guided-contact__submit\" type=\"button\" data-send>" + escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\" aria-hidden=\"true\">→</span></button><button class=\"guided-contact__text-button\" type=\"button\" data-edit>" + escapeHtml(t("edit")) + "</button></div>",
+        "<div class=\"guided-contact__review-actions\"><button class=\"guided-contact__submit\" type=\"button\" data-send>" + escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span></button><button class=\"guided-contact__text-button\" type=\"button\" data-edit>" + escapeHtml(t("edit")) + "</button></div>",
         "<p class=\"guided-contact__error\" aria-live=\"polite\"></p>"
       ].join("");
       ui.stage.querySelector("[data-send]").addEventListener("click", submit);
@@ -312,7 +319,7 @@
       topics,
       "<form class=\"guided-contact__form\">",
       field,
-      "<button class=\"guided-contact__submit\" type=\"submit\">" + escapeHtml(t("next")) + " <span class=\"guided-contact__submit-arrow\" aria-hidden=\"true\">→</span></button>",
+      "<button class=\"guided-contact__submit\" type=\"submit\">" + escapeHtml(t("next")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span></button>",
       "</form>",
       "<p class=\"guided-contact__error\" aria-live=\"polite\"></p>"
     ].join("");
@@ -404,7 +411,7 @@
       .catch(function () {
         showError(t("error"));
         button.disabled = false;
-        button.innerHTML = escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\" aria-hidden=\"true\">→</span>";
+        button.innerHTML = escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span>";
       })
       .finally(function () { state.sending = false; });
   }
@@ -445,8 +452,9 @@
     wrap.className = "guided-contact";
     wrap.innerHTML = [
       "<button class=\"guided-contact__launcher\" type=\"button\" aria-expanded=\"false\">",
-      "<span><span class=\"guided-contact__eyebrow\"></span><span class=\"guided-contact__launcher-title\"></span></span>",
-      "<span class=\"guided-contact__launcher-side\"><span class=\"guided-contact__launcher-meta\"></span><span class=\"guided-contact__arrow\" aria-hidden=\"true\">→</span></span>",
+      "<span class=\"guided-contact__badge\"><svg class=\"guided-contact__badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"></rect><line x1=\"8\" y1=\"8\" x2=\"16\" y2=\"8\"></line><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line><line x1=\"8\" y1=\"16\" x2=\"12\" y2=\"16\"></line></svg><span class=\"guided-contact__eyebrow\"></span></span>",
+      "<span class=\"guided-contact__launcher-title\"></span>",
+      "<span class=\"guided-contact__launcher-side\"><span class=\"guided-contact__launcher-meta\"></span><span class=\"guided-contact__arrow\" aria-hidden=\"true\">" + arrowIcon() + "</span></span>",
       "</button>",
       "<section class=\"guided-contact__panel\" hidden>",
       "<div class=\"guided-contact__top\"><div class=\"guided-contact__top-left\"><span class=\"guided-contact__signal\"></span><span class=\"guided-contact__progress-label\"></span></div><button class=\"guided-contact__close\" type=\"button\">×</button></div>",
