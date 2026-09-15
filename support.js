@@ -2,6 +2,8 @@
   "use strict";
 
   var CONTACT_ENDPOINT = "https://contact-api.luizeduardo55062.workers.dev/contact";
+  var TURNSTILE_SITE_KEY = "0x4AAAAAAE1O3nRYYxxiRXG6";
+  var TURNSTILE_ACTION = "contact";
   var STORAGE_KEY = "contact-chat-open";
   var RATE_LIMIT_KEY = "contact-chat-last-submit";
 
@@ -38,6 +40,7 @@
       invalidEmail: "Esse e-mail parece incompleto. Pode conferir?",
       shortMessage: "Me dê um pouco mais de contexto antes de continuar.",
       rateLimit: "Espere alguns segundos antes de enviar outra mensagem.",
+      verificationError: "Não consegui concluir a verificação de segurança. Tente novamente.",
       summaryName: "nome",
       summaryEmail: "e-mail",
       summaryTopic: "assunto",
@@ -70,12 +73,13 @@
       restart: "Start over",
       sending: "Sending...",
       successTitle: "Message on its way.",
-      success: "Thanks for the context. Luiz will reply as soon as I can.",
+      success: "Thanks for the context. Luiz will reply as soon as he can.",
       newMessage: "Send another",
       error: "I could not send it right now. Try again in a few minutes or use the direct email.",
       invalidEmail: "That email looks incomplete. Could you check it?",
       shortMessage: "Give me a little more context before continuing.",
       rateLimit: "Wait a few seconds before sending another message.",
+      verificationError: "I could not complete the security verification. Please try again.",
       summaryName: "name",
       summaryEmail: "email",
       summaryTopic: "subject",
@@ -114,6 +118,7 @@
       invalidEmail: "Ese correo parece incompleto. ¿Puedes revisarlo?",
       shortMessage: "Cuéntame un poco más antes de continuar.",
       rateLimit: "Espera unos segundos antes de enviar otro mensaje.",
+      verificationError: "No pude completar la verificación de seguridad. Inténtalo de nuevo.",
       summaryName: "nombre",
       summaryEmail: "correo",
       summaryTopic: "asunto",
@@ -125,6 +130,9 @@
   var steps = ["name", "email", "topic", "message", "review"];
   var state = { index: 0, data: {}, sending: false, done: false };
   var ui = {};
+  var turnstileLoadPromise = null;
+  var turnstileWidgetId = null;
+  var turnstileToken = "";
 
   function lang() {
     var value = (document.documentElement.getAttribute("lang") || "pt").toLowerCase();
@@ -149,6 +157,92 @@
 
   function arrowIcon() {
     return "<svg class=\"guided-contact__arrow-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" y1=\"12\" x2=\"20\" y2=\"12\"></line><polyline points=\"13 5 20 12 13 19\"></polyline></svg>";
+  }
+
+  function loadTurnstile() {
+    if (window.turnstile) return Promise.resolve(window.turnstile);
+    if (turnstileLoadPromise) return turnstileLoadPromise;
+
+    turnstileLoadPromise = new Promise(function (resolve, reject) {
+      var existing = document.getElementById("cloudflare-turnstile-script");
+      if (existing) {
+        existing.addEventListener("load", function () { resolve(window.turnstile); }, { once: true });
+        existing.addEventListener("error", reject, { once: true });
+        return;
+      }
+
+      var script = document.createElement("script");
+      script.id = "cloudflare-turnstile-script";
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      script.onload = function () { resolve(window.turnstile); };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+
+    return turnstileLoadPromise;
+  }
+
+  function disposeTurnstile() {
+    turnstileToken = "";
+    if (turnstileWidgetId !== null && window.turnstile) {
+      try { window.turnstile.remove(turnstileWidgetId); } catch (e) {}
+    }
+    turnstileWidgetId = null;
+  }
+
+  function resetTurnstile() {
+    turnstileToken = "";
+    var button = ui.stage && ui.stage.querySelector("[data-send]");
+    if (button) button.disabled = true;
+    if (turnstileWidgetId !== null && window.turnstile) {
+      try { window.turnstile.reset(turnstileWidgetId); } catch (e) {}
+    }
+  }
+
+  function renderTurnstile() {
+    var container = ui.stage.querySelector("[data-turnstile]");
+    var button = ui.stage.querySelector("[data-send]");
+    if (!container || !button) return;
+
+    button.disabled = true;
+    turnstileToken = "";
+
+    loadTurnstile()
+      .then(function (turnstile) {
+        if (!container.isConnected) return;
+
+        turnstileWidgetId = turnstile.render(container, {
+          sitekey: TURNSTILE_SITE_KEY,
+          action: TURNSTILE_ACTION,
+          appearance: "interaction-only",
+          theme: "auto",
+          size: "flexible",
+          "response-field": false,
+          callback: function (token) {
+            turnstileToken = token;
+            if (!state.sending && button.isConnected) button.disabled = false;
+          },
+          "expired-callback": function () {
+            resetTurnstile();
+          },
+          "timeout-callback": function () {
+            resetTurnstile();
+          },
+          "error-callback": function (errorCode) {
+            console.error("Turnstile error:", errorCode);
+            turnstileToken = "";
+            if (button.isConnected) button.disabled = true;
+            showError(t("verificationError"));
+            return true;
+          }
+        });
+      })
+      .catch(function (error) {
+        console.error("Turnstile load error:", error);
+        showError(t("verificationError"));
+      });
   }
 
   function injectStyles() {
@@ -200,6 +294,7 @@
       ".guided-contact__review dt,.guided-contact__review dd{margin:0;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:13px;line-height:1.45}",
       ".guided-contact__review dt{color:var(--muted)}",
       ".guided-contact__review dd{color:var(--ink);overflow-wrap:anywhere}",
+      ".guided-contact__turnstile{min-height:1px;margin:0 0 18px;max-width:100%}",
       ".guided-contact__review-actions{display:flex;align-items:center;gap:18px}",
       ".guided-contact__text-button{padding:0;border:0;background:transparent;color:var(--nav);font-size:12px;cursor:pointer}",
       ".guided-contact__text-button:hover{color:var(--accent)}",
@@ -247,6 +342,7 @@
   }
 
   function renderStep() {
+    disposeTurnstile();
     state.done = false;
     renderProgress();
     var step = currentStep();
@@ -270,7 +366,8 @@
         "<dt>" + escapeHtml(t("summaryTopic")) + "</dt><dd>" + escapeHtml(state.data.topic) + "</dd>",
         "<dt>" + escapeHtml(t("summaryMessage")) + "</dt><dd>" + escapeHtml(state.data.message) + "</dd>",
         "</dl>",
-        "<div class=\"guided-contact__review-actions\"><button class=\"guided-contact__submit\" type=\"button\" data-send>" + escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span></button><button class=\"guided-contact__text-button\" type=\"button\" data-edit>" + escapeHtml(t("edit")) + "</button></div>",
+        "<div class=\"guided-contact__turnstile\" data-turnstile></div>",
+        "<div class=\"guided-contact__review-actions\"><button class=\"guided-contact__submit\" type=\"button\" data-send disabled>" + escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span></button><button class=\"guided-contact__text-button\" type=\"button\" data-edit>" + escapeHtml(t("edit")) + "</button></div>",
         "<p class=\"guided-contact__error\" aria-live=\"polite\"></p>"
       ].join("");
       ui.stage.querySelector("[data-send]").addEventListener("click", submit);
@@ -278,6 +375,7 @@
         state.index = 0;
         renderStep();
       });
+      renderTurnstile();
       return;
     }
 
@@ -342,6 +440,7 @@
   }
 
   function renderSuccess() {
+    disposeTurnstile();
     state.done = true;
     ui.progressLabel.textContent = t("successTitle");
     for (var i = 0; i < ui.progress.children.length; i++) ui.progress.children[i].classList.add("is-active");
@@ -357,6 +456,7 @@
   function submit() {
     if (state.sending) return;
     if (!canSubmitAgain()) return showError(t("rateLimit"));
+    if (!turnstileToken) return showError(t("verificationError"));
 
     var button = ui.stage.querySelector("[data-send]");
     state.sending = true;
@@ -373,7 +473,8 @@
         email: state.data.email,
         subject: state.data.topic,
         message: state.data.message,
-        page_url: window.location.href
+        page_url: window.location.href,
+        turnstile_token: turnstileToken
       })
     })
       .then(function (response) {
@@ -393,13 +494,14 @@
       .catch(function (error) {
         console.error("Contact form error:", error);
         showError(t("error"));
-        button.disabled = false;
         button.innerHTML = escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span>";
+        resetTurnstile();
       })
       .finally(function () { state.sending = false; });
   }
 
   function reset() {
+    disposeTurnstile();
     state.index = 0;
     state.data = {};
     state.sending = false;
@@ -413,7 +515,10 @@
     ui.launcher.setAttribute("aria-expanded", open ? "true" : "false");
     try { localStorage.setItem(STORAGE_KEY, open ? "1" : "0"); } catch (e) {}
     if (open) renderStep();
-    else ui.launcher.focus();
+    else {
+      disposeTurnstile();
+      ui.launcher.focus();
+    }
   }
 
   function refreshLanguage() {
@@ -430,6 +535,7 @@
     var footer = document.getElementById("contato");
     if (!footer || document.querySelector(".guided-contact")) return;
     injectStyles();
+    loadTurnstile().catch(function () {});
 
     var wrap = document.createElement("div");
     wrap.className = "guided-contact";
