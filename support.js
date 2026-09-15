@@ -1,13 +1,7 @@
 (function () {
   "use strict";
 
-  var EMAILJS_CONFIG = {
-    publicKey: "UGM02WXhqyyFQ8v5g",
-    serviceId: "service_ovszbeh",
-    templateId: "template_48exd6r"
-  };
-
-  var EMAILJS_SDK = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+  var CONTACT_ENDPOINT = "https://contact-api.luizeduardo55062.workers.dev/contact";
   var STORAGE_KEY = "contact-chat-open";
   var RATE_LIMIT_KEY = "contact-chat-last-submit";
 
@@ -44,7 +38,6 @@
       invalidEmail: "Esse e-mail parece incompleto. Pode conferir?",
       shortMessage: "Me dê um pouco mais de contexto antes de continuar.",
       rateLimit: "Espere alguns segundos antes de enviar outra mensagem.",
-      configMissing: "O contato está pronto, mas falta configurar o EmailJS.",
       summaryName: "nome",
       summaryEmail: "e-mail",
       summaryTopic: "assunto",
@@ -77,13 +70,12 @@
       restart: "Start over",
       sending: "Sending...",
       successTitle: "Message on its way.",
-      success: "Thanks for the context. Luiz will reply as soon as he can.",
+      success: "Thanks for the context. Luiz will reply as soon as I can.",
       newMessage: "Send another",
       error: "I could not send it right now. Try again in a few minutes or use the direct email.",
       invalidEmail: "That email looks incomplete. Could you check it?",
       shortMessage: "Give me a little more context before continuing.",
       rateLimit: "Wait a few seconds before sending another message.",
-      configMissing: "The contact is ready, but EmailJS still needs to be configured.",
       summaryName: "name",
       summaryEmail: "email",
       summaryTopic: "subject",
@@ -122,7 +114,6 @@
       invalidEmail: "Ese correo parece incompleto. ¿Puedes revisarlo?",
       shortMessage: "Cuéntame un poco más antes de continuar.",
       rateLimit: "Espera unos segundos antes de enviar otro mensaje.",
-      configMissing: "El contacto está listo, pero falta configurar EmailJS.",
       summaryName: "nombre",
       summaryEmail: "correo",
       summaryTopic: "asunto",
@@ -146,12 +137,6 @@
     return (copy[lang()] || copy.pt)[key];
   }
 
-  function configured() {
-    return EMAILJS_CONFIG.publicKey.indexOf("YOUR_") !== 0 &&
-      EMAILJS_CONFIG.serviceId.indexOf("YOUR_") !== 0 &&
-      EMAILJS_CONFIG.templateId.indexOf("YOUR_") !== 0;
-  }
-
   function emailValid(value) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
@@ -164,18 +149,6 @@
 
   function arrowIcon() {
     return "<svg class=\"guided-contact__arrow-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" y1=\"12\" x2=\"20\" y2=\"12\"></line><polyline points=\"13 5 20 12 13 19\"></polyline></svg>";
-  }
-
-  function loadEmailJs() {
-    return new Promise(function (resolve, reject) {
-      if (window.emailjs) return resolve(window.emailjs);
-      var script = document.createElement("script");
-      script.src = EMAILJS_SDK;
-      script.async = true;
-      script.onload = function () { resolve(window.emailjs); };
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
   }
 
   function injectStyles() {
@@ -383,7 +356,6 @@
 
   function submit() {
     if (state.sending) return;
-    if (!configured()) return showError(t("configMissing"));
     if (!canSubmitAgain()) return showError(t("rateLimit"));
 
     var button = ui.stage.querySelector("[data-send]");
@@ -391,24 +363,35 @@
     button.disabled = true;
     button.textContent = t("sending");
 
-    loadEmailJs()
-      .then(function (emailjs) {
-        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
-        return emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
-          from_name: state.data.name,
-          reply_to: state.data.email,
-          from_email: state.data.email,
-          subject: state.data.topic,
-          message: state.data.message,
-          page_url: window.location.href,
-          sent_at: new Date().toISOString()
-        });
+    fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: state.data.name,
+        email: state.data.email,
+        subject: state.data.topic,
+        message: state.data.message,
+        page_url: window.location.href
+      })
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          return response.json()
+            .catch(function () { return {}; })
+            .then(function (data) {
+              throw new Error(data.error || "Contact request failed");
+            });
+        }
+        return response.json();
       })
       .then(function () {
         try { localStorage.setItem(RATE_LIMIT_KEY, String(Date.now())); } catch (e) {}
         renderSuccess();
       })
-      .catch(function () {
+      .catch(function (error) {
+        console.error("Contact form error:", error);
         showError(t("error"));
         button.disabled = false;
         button.innerHTML = escapeHtml(t("send")) + " <span class=\"guided-contact__submit-arrow\">" + arrowIcon() + "</span>";
