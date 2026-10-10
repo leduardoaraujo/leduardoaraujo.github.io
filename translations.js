@@ -12,8 +12,8 @@
 
   var dict = {
     pt: {
-      "meta.title": "Luiz Eduardo Araujo — dados, análise e IA",
-      "meta.description": "Desenvolvedor de dados e IA. Construo produtos de dados, agentes e copilotos que operam sobre bancos de dados, Power BI e documentação — do banco de dados até a ferramenta que as pessoas usam.",
+      "meta.title": "Luiz Eduardo Araujo | dados, análise e IA",
+      "meta.description": "Desenvolvedor de dados e IA. Construo ferramentas internas, agentes e copilotos que trabalham sobre bancos de dados, Power BI e documentação.",
       "meta.ogdescription": "Produtos de dados, agentes e copilotos de IA sobre bancos de dados, Power BI e documentação.",
 
       "nav.work": "trabalho",
@@ -23,8 +23,8 @@
       "theme.title": "Alternar tema",
       "lang.aria": "Idioma",
 
-      "hero.h1": "Dados, análise e IA — do banco de dados até a ferramenta que as pessoas usam.",
-      "hero.p": 'Comecei em analytics com Power BI, SQL e Python. Hoje construo o que vem <em style="font-style:italic;">depois</em> da análise: aplicações, agentes e visualizações sobre bancos de dados, modelos semânticos e documentação. Não só o gráfico — a ferramenta inteira.',
+      "hero.h1": "Desenvolvo ferramentas de dados e IA.",
+      "hero.p": "Comecei em analytics com Power BI, SQL e Python. Hoje também construo aplicações, agentes e visualizações em cima de bancos de dados, modelos semânticos e documentação, para que as pessoas consigam usar os dados sem depender de um relatório pronto.",
 
       "do.label": "o que faço",
       "do.1": "Produtos de dados e ferramentas internas sobre dados reais da empresa.",
@@ -34,16 +34,16 @@
 
       "work.label": "trabalho selecionado",
       "work.gav.cat": "copiloto corporativo",
-      "work.gav.desc": 'Copiloto que conversa em linguagem natural sobre o ecossistema analítico da empresa: seleciona relatórios, consulta o Power BI e mostra resultados — respeitando regras de negócio e permissões antes de responder. Seu motor de retrieval é open-source, o <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.',
+      "work.gav.desc": "Copiloto que responde perguntas em linguagem natural sobre o ecossistema analítico da empresa: escolhe o relatório certo, consulta o Power BI e mostra o resultado. Antes de responder, verifica regras de negócio e permissões. O motor de retrieval é open-source: <a href=\"https://github.com/leduardoaraujo/OpenContext\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);\">OpenContext</a>.",
       "work.pipelinekit.cat": "framework de dados",
       "work.pipelinekit.desc": "Framework ETL para ingestão de APIs, com pipelines declarados em YAML: chamadas assíncronas, transformação de JSON e entrega simultânea para múltiplos destinos.",
       "work.ocr.cat": "visão computacional",
-      "work.ocr.desc": "OCR local-first para documentos fiscais brasileiros. Preserva blocos, coordenadas e incerteza — validação determinística primeiro, LLM só para estruturação pontual.",
+      "work.ocr.desc": "OCR local-first para documentos fiscais brasileiros. Preserva blocos, coordenadas e incerteza. A validação é determinística; o LLM entra só para estruturar trechos específicos.",
       "work.schema.cat": "documentação autônoma",
       "work.schema.desc": "Agente que gera documentação técnica a partir de esquemas PostgreSQL via MCP. Documentação viva em Markdown, sem manutenção manual.",
 
       "about.label": "sobre",
-      "about.p1": "Gosto de problemas que juntam código, arquitetura e contexto de negócio numa experiência simples de usar. Meu interesse é IA como interface para sistemas e dados — sem ignorar regras e riscos.",
+      "about.p1": "Gosto de problemas que juntam código, arquitetura e contexto de negócio numa coisa simples de usar. Me interessa usar IA como interface para sistemas e dados, levando a sério as regras e os riscos de cada caso.",
       "about.p2": "Fora do trabalho, fotografo, escrevo e mantenho projetos pessoais ligados a música.",
 
       "tools.label": "ferramentas",
@@ -52,17 +52,17 @@
       "tools.analytics": "analytics",
       "tools.ai": "ia",
 
-      "contact.p": "Tem dados, regras e processos que ainda não viraram produto? Escreva.",
+      "contact.p": "Se quiser conversar sobre um projeto, me mande um e-mail.",
       "contact.copy.aria": "Copiar endereço de e-mail",
       "contact.copy.title": "Copiar e-mail",
       "contact.copied": "Copiado!",
       "contact.resume": "Currículo",
-      "contact.backtop.aria": "Luiz Eduardo Araujo — voltar ao topo"
+      "contact.backtop.aria": "Luiz Eduardo Araujo, voltar ao topo"
     },
 
     en: {
-      "meta.title": "Luiz Eduardo Araujo — data, analytics and AI",
-      "meta.description": "Data and AI developer. I build data products, agents and copilots that operate over databases, Power BI and documentation — from the database to the tool people actually use.",
+      "meta.title": "Luiz Eduardo Araujo | data, analytics and AI",
+      "meta.description": "Data and AI developer. I build internal tools, agents and copilots that work on top of databases, Power BI and documentation.",
       "meta.ogdescription": "Data products, AI agents and copilots over databases, Power BI and documentation.",
 
       "nav.work": "work",
@@ -72,8 +72,8 @@
       "theme.title": "Toggle theme",
       "lang.aria": "Language",
 
-      "hero.h1": "Data, analytics and AI — from the database to the tool people actually use.",
-      "hero.p": 'I started in analytics with Power BI, SQL and Python. Today I build what comes <em style="font-style:italic;">after</em> the analysis: applications, agents and visualizations over databases, semantic models and documentation. Not just the chart — the whole tool.',
+      "hero.h1": "I build data and AI tools.",
+      "hero.p": "I started in analytics with Power BI, SQL and Python. These days I also build applications, agents and visualizations on top of databases, semantic models and documentation, so people can use their data without waiting for someone to build a report.",
 
       "do.label": "what i do",
       "do.1": "Data products and internal tools built on the company's real data.",
@@ -83,16 +83,16 @@
 
       "work.label": "selected work",
       "work.gav.cat": "enterprise copilot",
-      "work.gav.desc": 'A copilot you talk to in natural language about the company\'s analytics ecosystem: it picks reports, queries Power BI and shows results — respecting business rules and permissions before answering. Its retrieval engine is open-source: <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.',
+      "work.gav.desc": "A copilot that answers natural-language questions about the company's analytics ecosystem: it picks the right report, queries Power BI and shows the result. Before answering, it checks business rules and permissions. The retrieval engine is open source: <a href=\"https://github.com/leduardoaraujo/OpenContext\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);\">OpenContext</a>.",
       "work.pipelinekit.cat": "data framework",
       "work.pipelinekit.desc": "An ETL framework for API ingestion, with pipelines declared in YAML: async calls, JSON transformation and simultaneous delivery to multiple destinations.",
       "work.ocr.cat": "computer vision",
-      "work.ocr.desc": "Local-first OCR for Brazilian tax documents. It preserves blocks, coordinates and uncertainty — deterministic validation first, LLM only for targeted structuring.",
+      "work.ocr.desc": "Local-first OCR for Brazilian tax documents. It keeps blocks, coordinates and uncertainty. Validation is deterministic; the LLM is only used to structure specific fields.",
       "work.schema.cat": "autonomous docs",
       "work.schema.desc": "An agent that generates technical documentation from PostgreSQL schemas via MCP. Living Markdown docs, no manual upkeep.",
 
       "about.label": "about",
-      "about.p1": "I like problems that bring together code, architecture and business context into something simple to use. My interest is AI as an interface to systems and data — without ignoring rules and risks.",
+      "about.p1": "I like problems that mix code, architecture and business context into something simple to use. I'm interested in AI as an interface to systems and data, taking each case's rules and risks seriously.",
       "about.p2": "Outside of work, I take photos, write and keep personal projects tied to music.",
 
       "tools.label": "tools",
@@ -101,17 +101,17 @@
       "tools.analytics": "analytics",
       "tools.ai": "ai",
 
-      "contact.p": "Got data, rules and processes that haven't become a product yet? Get in touch.",
+      "contact.p": "If you want to talk about a project, send me an email.",
       "contact.copy.aria": "Copy email address",
       "contact.copy.title": "Copy email",
       "contact.copied": "Copied!",
       "contact.resume": "Résumé",
-      "contact.backtop.aria": "Luiz Eduardo Araujo — back to top"
+      "contact.backtop.aria": "Luiz Eduardo Araujo, back to top"
     },
 
     es: {
-      "meta.title": "Luiz Eduardo Araujo — datos, análisis e IA",
-      "meta.description": "Desarrollador de datos e IA. Construyo productos de datos, agentes y copilotos que operan sobre bases de datos, Power BI y documentación — de la base de datos a la herramienta que la gente usa.",
+      "meta.title": "Luiz Eduardo Araujo | datos, análisis e IA",
+      "meta.description": "Desarrollador de datos e IA. Construyo herramientas internas, agentes y copilotos que trabajan sobre bases de datos, Power BI y documentación.",
       "meta.ogdescription": "Productos de datos, agentes y copilotos de IA sobre bases de datos, Power BI y documentación.",
 
       "nav.work": "trabajo",
@@ -121,8 +121,8 @@
       "theme.title": "Alternar tema",
       "lang.aria": "Idioma",
 
-      "hero.h1": "Datos, análisis e IA — de la base de datos a la herramienta que la gente usa.",
-      "hero.p": 'Empecé en analytics con Power BI, SQL y Python. Hoy construyo lo que viene <em style="font-style:italic;">después</em> del análisis: aplicaciones, agentes y visualizaciones sobre bases de datos, modelos semánticos y documentación. No solo el gráfico — la herramienta entera.',
+      "hero.h1": "Desarrollo herramientas de datos e IA.",
+      "hero.p": "Empecé en analytics con Power BI, SQL y Python. Hoy también construyo aplicaciones, agentes y visualizaciones sobre bases de datos, modelos semánticos y documentación, para que la gente pueda usar los datos sin depender de un informe hecho.",
 
       "do.label": "lo que hago",
       "do.1": "Productos de datos y herramientas internas sobre datos reales de la empresa.",
@@ -132,16 +132,16 @@
 
       "work.label": "trabajo seleccionado",
       "work.gav.cat": "copiloto corporativo",
-      "work.gav.desc": 'Copiloto con el que hablas en lenguaje natural sobre el ecosistema analítico de la empresa: selecciona informes, consulta Power BI y muestra resultados — respetando reglas de negocio y permisos antes de responder. Su motor de retrieval es open-source: <a href="https://github.com/leduardoaraujo/OpenContext" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);">OpenContext</a>.',
+      "work.gav.desc": "Copiloto que responde preguntas en lenguaje natural sobre el ecosistema analítico de la empresa: elige el informe correcto, consulta Power BI y muestra el resultado. Antes de responder, verifica reglas de negocio y permisos. El motor de retrieval es open source: <a href=\"https://github.com/leduardoaraujo/OpenContext\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);\">OpenContext</a>.",
       "work.pipelinekit.cat": "framework de datos",
       "work.pipelinekit.desc": "Framework ETL para ingesta de APIs, con pipelines declarados en YAML: llamadas asíncronas, transformación de JSON y entrega simultánea a múltiples destinos.",
       "work.ocr.cat": "visión artificial",
-      "work.ocr.desc": "OCR local-first para documentos fiscales brasileños. Preserva bloques, coordenadas e incertidumbre — validación determinista primero, LLM solo para estructuración puntual.",
+      "work.ocr.desc": "OCR local-first para documentos fiscales brasileños. Conserva bloques, coordenadas e incertidumbre. La validación es determinista; el LLM solo se usa para estructurar campos específicos.",
       "work.schema.cat": "documentación autónoma",
       "work.schema.desc": "Agente que genera documentación técnica a partir de esquemas PostgreSQL vía MCP. Documentación viva en Markdown, sin mantenimiento manual.",
 
       "about.label": "sobre",
-      "about.p1": "Me gustan los problemas que juntan código, arquitectura y contexto de negocio en una experiencia simple de usar. Mi interés es la IA como interfaz para sistemas y datos — sin ignorar reglas y riesgos.",
+      "about.p1": "Me gustan los problemas que mezclan código, arquitectura y contexto de negocio en algo simple de usar. Me interesa la IA como interfaz para sistemas y datos, tomando en serio las reglas y los riesgos de cada caso.",
       "about.p2": "Fuera del trabajo, fotografío, escribo y mantengo proyectos personales ligados a la música.",
 
       "tools.label": "herramientas",
@@ -150,12 +150,12 @@
       "tools.analytics": "analytics",
       "tools.ai": "ia",
 
-      "contact.p": "¿Tienes datos, reglas y procesos que aún no se han vuelto producto? Escríbeme.",
+      "contact.p": "Si quieres hablar de un proyecto, escríbeme un correo.",
       "contact.copy.aria": "Copiar dirección de correo",
       "contact.copy.title": "Copiar correo",
       "contact.copied": "¡Copiado!",
       "contact.resume": "Currículum",
-      "contact.backtop.aria": "Luiz Eduardo Araujo — volver arriba"
+      "contact.backtop.aria": "Luiz Eduardo Araujo, volver arriba"
     }
   };
 
